@@ -17,42 +17,10 @@ const SavedBooks = () => {
   const [userData, setUserData] = useState("");
   const [removeBook, { error }] = useMutation(REMOVE_BOOK);
   const { loading, data } = useQuery(GET_ME);
-  // setUserData(data);
 
-  // Supposed to use this instead of Auth.getProfile??
-  // const { _id, username } = useParams();
-
-  // use this to determine if `useEffect()` hook needs to run again
   if (data) {
     userDataLength = 1;
   }
-
-  // useEffect(() => {
-  //   const getUserData = async () => {
-  //     try {
-  //       const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-  //       if (!token) {
-  //         return false;
-  //       }
-
-  //       const user = Auth.getProfile();
-
-  //       const response = await me(user.data.username, user.data._id);
-
-  //       if (!response.ok) {
-  //         throw new Error("something went wrong!");
-  //       }
-
-  //       // const user = await response.json();
-  //       setUserData(response);
-  //     } catch (err) {
-  //       console.error(err);
-  //     }
-  //   };
-
-  //   getUserData();
-  // }, [userDataLength]);
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = async (bookId) => {
