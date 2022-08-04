@@ -1,16 +1,19 @@
 import { gql } from "@apollo/client";
 
-// TODO
 export const GET_ME = gql`
-  query me($username: String!) {
-    me(username: $username) {
+  query userData {
+    me {
       _id
       username
       email
-      thoughts {
-        _id
-        thoughtText
-        createdAt
+      password
+      savedBooks {
+        authors
+        description
+        bookId
+        image
+        link
+        title
       }
     }
   }
