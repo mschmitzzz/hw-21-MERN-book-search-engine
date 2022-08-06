@@ -18,6 +18,7 @@ const SavedBooks = () => {
   const [removeBook, { error }] = useMutation(REMOVE_BOOK);
   const { loading, data } = useQuery(GET_ME);
 
+  // use this to determine if `useEffect()` hook needs to run again
   if (data) {
     userDataLength = 1;
   }
@@ -31,7 +32,7 @@ const SavedBooks = () => {
     }
 
     try {
-      const response = await removeBook({ variables: { bookId, token } });
+      const response = await removeBook({ variables: { bookId } });
 
       if (!response.data) {
         throw new Error("something went wrong!");
